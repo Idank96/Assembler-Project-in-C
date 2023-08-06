@@ -1,3 +1,5 @@
+* University course (Systems Programming C)
+
 # Assembler with Two Passes
 This is a simple assembler with two passes. It processes input assembly code files, performs two passes, and generates executable files. The assembler uses linked lists for symbol table and memory image data structures. It is designed to handle errors and provide meaningful error messages.
 
