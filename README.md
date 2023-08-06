@@ -27,16 +27,13 @@ The assembler is designed to handle errors. If any error is found in the assembl
 
 from: Idan Kogan
 
-- 	To open 'assembler' - open the terminal in 'Maman14' folder and run
-
-- 	The files '.ob' '.ext' '.ent' creates inside the folder 'tests'. 
-	Only if you want to change the output folder:
-	change the global variable 'dir' from "/tests/" to whatever you want - Inside 'files.c'.
-	/*IMPORTANT: create the folder first, then create the '.as' files and then run 'make' command, then run 'assembler'*/
+- 	To open 'assembler', open the terminal in the 'Maman14' folder and run the following:
+- 	The files '.ob', '.ext', and '.ent' are created inside the folder 'tests'. If you want to change the output folder, modify the global
+	variable 'dir' in 'files.c' to the desired location. 
+	IMPORTANT: Create the folder first, then create the '.as' files, and finally, run the 'make' command followed by 'assembler'.
 
 - 	Debug:
-- Details on each line: uncomment 'P_All' macro in 'main.c'->'first_pass()'.
-	Example:
+  	Details on each line: Uncomment the 'P_All' macro in 'main.c' -> 'first_pass()'. For example:
 	cmp K #-6
 	op_array[0]: K op_array[1]: -6 
 	symbol: command:cmp i_command: 1 i_data: 0 src_rst: dst_rst: label:K opnum1:-999 opnum2:-6src_method:1 dst_method:0
@@ -45,6 +42,6 @@ from: Idan Kogan
 - Details on symbol-table and memory-image: uncomment these functions in 'main.c'->'second_pass()'	printSymbolTable(symbolTable_head);
 																												printDataImg(code_head);
 
-Thank you
-Idan
+
+Idan Kogan
 
