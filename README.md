@@ -1,4 +1,4 @@
-* University course (Systems Programming in C)
+* University course (Systems Programming in C, 2020)
 
 # Assembler with Two Passes
 This is a simple assembler with two passes. It processes input assembly code files, performs two passes, and generates executable files. The assembler uses linked lists for symbol table and memory image data structures. It is designed to handle errors and provide meaningful error messages.
@@ -22,10 +22,6 @@ Generates executable files for each assembly file.
 
 ### Error Handling
 The assembler is designed to handle errors. If any error is found in the assembly code during the first pass, the assembler will stop processing and display an error message with the line number. The second pass will be skipped, and no executable files will be generated.
-
-2020 assembler project
-
-from: Idan Kogan
 
 - 	To open 'assembler', open the terminal in the 'Maman14' folder and run the following:
 - 	The files '.ob', '.ext', and '.ent' are created inside the folder 'tests'. If you want to change the output folder, modify the global
