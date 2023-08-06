@@ -3,7 +3,7 @@
 #include "main.h"
 
 /*	This is an assembler with 2 passes.
-	please read README file	*/
+	please read the README file	*/
 
 int main(int argc, char *argv[])
 {
@@ -20,16 +20,16 @@ int main(int argc, char *argv[])
 /*	-	parse each line
 	-	add command to symbol-table (linked list) if needed.
 	-	add command to memory-image (linked list).
-	-	if an error found - continue to search for more and exit before second pass. */
+	-	if an error is found - continue to search for more and exit before the second pass. */
 void first_pass()
 {
-	cnt_lines=0;
+	cnt_lines = 0;
 	symbolTable_head = NULL;
 	code_head = NULL;
-	data_head =NULL;
-	IC=100, DC=0;
-	src_method=dst_method=NO_METHOD;
-	opnum1=opnum2=DEFAULT;
+	data_head = NULL;
+	IC = 100, DC = 0;
+	src_method=dst_method = NO_METHOD;
+	opnum1 = opnum2 = DEFAULT;
 
 	while(fgets(line,LINE_SIZE,fd1)!=NULL){
 		cnt_lines++;
