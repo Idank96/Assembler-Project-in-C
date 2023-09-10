@@ -1,5 +1,5 @@
 * University course (Systems Programming in C, 2020)
-* 
+
 <img src="Assembler.png" alt="Screenshot" width="500"/>
 
 # Assembler with Two Passes
