@@ -1,9 +1,9 @@
 #include "global.h"
-#include "lists.h"
 #include "parseLines.h"
 #include "structers.h"
 
-/* Note: 'int i' is defined in global.c and declared in main.h */
+
+int i;
 int commas;
 char *wrong_str;
 /*

@@ -9,7 +9,7 @@ struct symbol {
     ptr next;
 };
 
-extern ptr symbolTable_head;
+ptr symbolTable_head;
 
 typedef struct memoryObj * memoryObj_ptr;
 typedef struct memoryObj memoryObj_node;
@@ -21,5 +21,5 @@ struct memoryObj{
     memoryObj_ptr next;
 };
 
-extern memoryObj_ptr code_head;
-extern memoryObj_ptr data_head; 
+memoryObj_ptr code_head; 
+memoryObj_ptr data_head; 

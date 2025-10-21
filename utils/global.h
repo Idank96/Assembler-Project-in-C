@@ -33,21 +33,22 @@ union word{
 		}bits;
 };	
 
-/*global variables*/
-FILE *fd1;
-char filename[STR_SIZE];
-int IC, DC, ICF, IDF;
-char *str_array[STR_SIZE]/*the main array to parse*/, line[LINE_SIZE], line_temp[LINE_SIZE];	
-char symbol[STR_SIZE], command[STR_SIZE], src_rst[REGISTER_NAME_SIZE], dst_rst[REGISTER_NAME_SIZE], label[LABEL_SIZE]; /*store values*/
-char data_string[STR_SIZE];
-char *op_array[STR_SIZE]; /*array for the operands*/
-int src_method,dst_method,operands_cnt,opnum1,opnum2;
-int i_command; /*current command that need to be analyzed*/
-int i_data; /*the current data to parse*/
-int i_op; /*number of operand to parse*/
-int i_word; /*current word to parse*/
-int num_of_words;
-int symbolFLAG, dataFLAG, codeFLAG, entFLAG, extFLAG,first_opFLAG,second_opFLAG, stringFLAG, second_passFLAG,stopFLAG, errorFLAG,end_commaFLAG;
+/*global variables - extern declarations*/
+extern FILE *fd1;
+extern char filename[STR_SIZE];
+extern int IC, DC, ICF, IDF;
+extern char *str_array[STR_SIZE]; /*the main array to parse*/
+extern char line[LINE_SIZE], line_temp[LINE_SIZE];
+extern char symbol[STR_SIZE], command[STR_SIZE], src_rst[REGISTER_NAME_SIZE], dst_rst[REGISTER_NAME_SIZE], label[LABEL_SIZE]; /*store values*/
+extern char data_string[STR_SIZE];
+extern char *op_array[STR_SIZE]; /*array for the operands*/
+extern int src_method,dst_method,operands_cnt,opnum1,opnum2;
+extern int i_command; /*current command that need to be analyzed*/
+extern int i_data; /*the current data to parse*/
+extern int i_op; /*number of operand to parse*/
+extern int i_word; /*current word to parse*/
+extern int num_of_words;
+extern int symbolFLAG, dataFLAG, codeFLAG, entFLAG, extFLAG,first_opFLAG,second_opFLAG, stringFLAG, second_passFLAG,stopFLAG, errorFLAG,end_commaFLAG;
 
 
 #endif

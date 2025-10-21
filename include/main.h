@@ -9,8 +9,8 @@
 #define MEMORY_START 100
 #define NO_METHOD -2
 #define DEFAULT -999
-extern int i;
-extern int cnt_lines;
+int i=0;
+int cnt_lines;
 
 void first_pass();
 void second_pass();

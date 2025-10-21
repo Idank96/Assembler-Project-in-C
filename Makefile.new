@@ -1,0 +1,125 @@
+###############################################################################
+# Professional Makefile for Two-Pass Assembler
+# Author: Refactored for modern C standards
+# Date: 2025
+###############################################################################
+
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -ansi -pedantic -g
+LDFLAGS =
+
+# Directories
+SRC_DIR = src
+INC_DIR = include
+OBJ_DIR = obj
+BIN_DIR = bin
+TEST_DIR = tests
+
+# Target executable
+TARGET = $(BIN_DIR)/assembler
+
+# Source files
+SOURCES = $(wildcard $(SRC_DIR)/*.c)
+
+# Object files
+OBJECTS = $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# Header files
+HEADERS = $(wildcard $(INC_DIR)/*.h)
+
+# Include path
+INCLUDES = -I$(INC_DIR)
+
+# Colors for output
+COLOR_RESET = \033[0m
+COLOR_GREEN = \033[32m
+COLOR_BLUE = \033[34m
+COLOR_YELLOW = \033[33m
+
+###############################################################################
+# Targets
+###############################################################################
+
+.PHONY: all clean rebuild test help info
+
+# Default target
+all: $(TARGET)
+	@echo "$(COLOR_GREEN)Build complete! Executable: $(TARGET)$(COLOR_RESET)"
+
+# Link object files to create executable
+$(TARGET): $(OBJECTS) | $(BIN_DIR)
+	@echo "$(COLOR_BLUE)Linking: $@$(COLOR_RESET)"
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
+
+# Compile source files to object files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
+	@echo "$(COLOR_YELLOW)Compiling: $<$(COLOR_RESET)"
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+# Create directories if they don't exist
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(BIN_DIR):
+	@mkdir -p $(BIN_DIR)
+
+$(TEST_DIR):
+	@mkdir -p $(TEST_DIR)
+
+# Clean build artifacts
+clean:
+	@echo "$(COLOR_YELLOW)Cleaning build artifacts...$(COLOR_RESET)"
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -f $(TEST_DIR)/*.ob $(TEST_DIR)/*.ent $(TEST_DIR)/*.ext
+	@echo "$(COLOR_GREEN)Clean complete!$(COLOR_RESET)"
+
+# Rebuild from scratch
+rebuild: clean all
+
+# Run tests (if test files exist)
+test: $(TARGET) | $(TEST_DIR)
+	@echo "$(COLOR_BLUE)Running assembler...$(COLOR_RESET)"
+	@if [ -f $(TEST_DIR)/test.as ]; then \
+		$(TARGET) test; \
+	else \
+		echo "$(COLOR_YELLOW)No test files found in $(TEST_DIR)$(COLOR_RESET)"; \
+	fi
+
+# Display build information
+info:
+	@echo "====================================================="
+	@echo "  Two-Pass Assembler - Build Information"
+	@echo "====================================================="
+	@echo "Compiler:     $(CC)"
+	@echo "Flags:        $(CFLAGS)"
+	@echo "Source Dir:   $(SRC_DIR)"
+	@echo "Include Dir:  $(INC_DIR)"
+	@echo "Object Dir:   $(OBJ_DIR)"
+	@echo "Binary Dir:   $(BIN_DIR)"
+	@echo "Target:       $(TARGET)"
+	@echo "====================================================="
+	@echo "Source files:"
+	@echo "$(SOURCES)" | tr ' ' '\n' | sed 's/^/  - /'
+	@echo "====================================================="
+
+# Display help
+help:
+	@echo "Available targets:"
+	@echo "  all      - Build the assembler (default)"
+	@echo "  clean    - Remove build artifacts"
+	@echo "  rebuild  - Clean and build from scratch"
+	@echo "  test     - Run assembler on test files"
+	@echo "  info     - Display build configuration"
+	@echo "  help     - Display this help message"
+
+###############################################################################
+# Dependencies
+###############################################################################
+
+# Include dependency files if they exist
+-include $(OBJECTS:.o=.d)
+
+# Generate dependency files
+$(OBJ_DIR)/%.d: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(INCLUDES) -MM -MT '$(OBJ_DIR)/$*.o' $< > $@

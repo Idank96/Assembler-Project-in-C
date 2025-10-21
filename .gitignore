@@ -1,0 +1,51 @@
+# Object files
+*.o
+*.obj
+object_files/
+
+# Executables
+assembler
+*.exe
+*.out
+bin/assembler
+
+# Output files
+tests/*.ob
+tests/*.ent
+tests/*.ext
+*.ob
+*.ent
+*.ext
+
+# Debug files
+*.dSYM/
+*.su
+*.gch
+*.pch
+
+# Core dumps
+core
+*.core
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build directories
+obj/
+bin/
+
+# Dependency files
+*.d
+
+# Backup files
+*.bak
+*.backup
+*_old.*

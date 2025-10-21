@@ -1,7 +1,7 @@
 #include "global.h"
 #include "lists.h"
 #include "structers.h"
-#include "memoryLIst.h"
+#include "memoryList.h"
 
 /*
 	- this file manage the memory-image\linked-list. 	
